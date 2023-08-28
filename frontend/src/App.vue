@@ -2,7 +2,7 @@
   <router-view />
 </template>
 <style lang="scss">
-body {
-  background-color: #0D2F40;
-}
+// body {
+  // background-color: #0D2F40;
+// }
 </style>
