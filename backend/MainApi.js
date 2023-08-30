@@ -3,15 +3,18 @@ const express = require('express');
 const ImagesUpload = require("./multerConfig.js");
 const app = express();
 
-app.post("/image/upload",ImagesUpload.single('Image') ,(req, res) => {
+app.post("/image/upload", ImagesUpload.single('Image'), (req, res) => {
 
     try {
         res.status(200).json({
             error: false,
             msg: 'upload realizado com sucesso',
-        })
+        });
     } catch (error) {
-        
+        res.status(404).json({
+            error: true,
+            msg: 'erro ao fazer upload de imagens',
+        });
     }
 
 });
