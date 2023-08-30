@@ -14,7 +14,7 @@ module.exports = (
             },
         }),
         fileFilter: (req, file, cb) => {
-            const pngImages = ['img/png'].find(pngImages => pngImages === AllowImage.mimetype);
+            const pngImages = ['img/png'].find(pngImages => pngImages === file.mimetype);
 
             if (!pngImages) {
                 return cb(null, false)
