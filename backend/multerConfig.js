@@ -1,4 +1,4 @@
-import multer, { diskStorage } from 'multer';
+const multer = require('multer');
 const path = require('path');
 
 
@@ -10,11 +10,11 @@ module.exports = (
                 cb(null, '.Src/Images/');
             },
             filename: (req, file, cb) => {
-                cb(null, path.join(__dirname + file.originalname));
+                cb(null, Date.now() + path.extname(file.originalname));
             },
         }),
         fileFilter: (req, file, cb) => {
-            const pngImages = ['img/png'].find(pngImages => pngImages == AllowImage.mimetype);
+            const pngImages = ['img/png'].find(pngImages => pngImages === AllowImage.mimetype);
 
             if (!pngImages) {
                 return cb(null, false)
@@ -24,15 +24,3 @@ module.exports = (
         }
     })
 );
-
-
-
-
-
-// const storage = multer({
-//     upload: upload,
-
-//     fileFilter: (req, file, cb) => {
-
-//     }
-// });

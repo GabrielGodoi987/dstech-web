@@ -1,21 +1,22 @@
 const express = require('express');
+// importanto MulterConfig para fazer o upload de imagens de imagens
+const ImagesUpload = require("./multerConfig.js");
 const app = express();
 
+app.post("/image/upload",ImagesUpload.single('Image') ,(req, res) => {
 
-app.get("/Images", () => {
-    try{
+    try {
         res.status(200).json({
-            msg: "teste servidor node"
-        });
-    }catch(err){
-        res.status(500).json({
-            mag: "o servidor caiu"
+            error: false,
+            msg: 'upload realizado com sucesso',
         })
+    } catch (error) {
+        
     }
-})
+
+});
 
 
-
-app.get(process.env.PORT, () => {
-    console.log("Servidor node funcionando")
-})
+app.listen(3005, () => {
+    console.log("Servidor node funcionando");
+});
