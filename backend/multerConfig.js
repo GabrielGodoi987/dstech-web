@@ -1,4 +1,5 @@
 const { error } = require('console');
+const { json } = require('express');
 const multer = require('multer');
 const path = require('path');
 
@@ -17,12 +18,13 @@ const ImageUpload = multer.diskStorage({
 const upload = multer({
     storage: ImageUpload,
     fileFilter: (req, file, cb) => {
-        const ImgExtention = ['image/png'].find(ImageUpload => ImageUpload == file.mimetype);
+        console.log(file.mimetype);
+        const ImgExtention = ['image/PNG'].find(ImageUpload => ImageUpload == file.mimetype);
         
         if(ImgExtention){
             return cb(null, true);
         }else{
-            return cb(new Error("a Imagem inserida não é válida por favor tente novamente"));
+            return cb(new Error("arquivo inválido"));
         }
     }
 });
