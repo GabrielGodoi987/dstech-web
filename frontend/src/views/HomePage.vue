@@ -54,42 +54,17 @@
                 </div>
             </div>
         </q-page-container>
-          
+
 
         <q-page-container class="row justify-around bg-secondary q-mt-xl q-mb-xl">
-           <div class="col-md-3 text-center q-gutter-y-lg q-mb-xl" v-for="i in PlanList.Steps" :key="i.id">
-              <div class="text-h6 text-weight-bolder">{{i.id}}° Passo: {{ i.title }}</div>
-              <div class="text-subtitle2 text-weight-bold">{{ i.information }}</div>
-              <div class="text-body1">{{ i.Description }}</div>
-           </div>
+            <div class="col-md-3 text-center q-gutter-y-lg q-mb-xl" v-for="i in PlanList.Steps" :key="i.id">
+                <div class="text-h6 text-weight-bolder">{{ i.id }}° Passo: {{ i.title }}</div>
+                <div class="text-subtitle2 text-weight-bold">{{ i.information }}</div>
+                <div class="text-body1">{{ i.Description }}</div>
+            </div>
         </q-page-container>
 
- 
-
-
-
-        <q-page-container class="q-mt-xl q-mb-xl">
-            <q-parallax src="../assets/Acordo.jpg">
-                <div class="row">
-                    <div class="q-pa-md bg-white shadow-7 col-md-5 q-gutter-y-lg q-ml-xl">
-                        <div class="text-h6 text-center">DsTech e a facilidade do seu software</div>
-                        <div class="text-body1 text-center">
-                            Na jornada do crescimento empresarial, cada passo conta. Estamos aqui para facilitar sua
-                            trajetória.
-                            Seja para discutir ideias, tirar dúvidas ou explorar oportunidades, estamos a um clique de
-                            distância. Clique no botão de contato abaixo e inicie uma conversa conosco. Estamos prontos para
-                            ajudar a impulsionar o sucesso do seu negócio. Juntos, podemos transformar visões em realidade
-                        </div>
-                        <div class="text-center">
-                            <q-btn rounded color="primary" label="Entre em contato"/>
-                        </div>
-                    </div>
-                </div>
-
-            </q-parallax>
-        </q-page-container>
-
-
+        
         <!-- parte de planos da página Home -->
         <q-page-container>
             <div class="text-h4 text-center">Conheça os nossos planos</div>
