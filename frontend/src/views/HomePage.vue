@@ -18,9 +18,9 @@
                 <q-img src="../assets/pexels-lukas-574073.jpg" style="width: 100%; height: 100%;" />
             </div>
         </div>
-           
 
-        
+
+
 
 
         <q-page-container class="row justify-around q-mt-xl bg-secondary">
@@ -49,18 +49,137 @@
                     jornada para uma gestão empresarial simplificada, inteligente e mais lucrativa. Seu futuro empresarial
                     aguarda, e a DsTech está pronta para acompanhá-lo nessa transformação extraordinária.</div>
                 <div class="text-center q-gutter-x-xl">
-                    <q-btn rounded label="Saiba Mais" color="primary"/>
-                    <q-btn rounded label="Fale Conosco" color="accent"/>
+                    <q-btn rounded label="Saiba Mais" color="primary" />
+                    <q-btn rounded label="Fale Conosco" color="accent" />
                 </div>
             </div>
         </q-page-container>
+          
+
+        <q-page-container class="row justify-around bg-secondary q-mt-xl q-mb-xl">
+           <div class="col-md-3 text-center q-gutter-y-lg q-mb-xl" v-for="i in PlanList.Steps" :key="i.id">
+              <div class="text-h6 text-weight-bolder">{{i.id}}° Passo: {{ i.title }}</div>
+              <div class="text-subtitle2 text-weight-bold">{{ i.information }}</div>
+              <div class="text-body1">{{ i.Description }}</div>
+           </div>
+        </q-page-container>
+
+ 
+
+
+
+        <q-page-container class="q-mt-xl q-mb-xl">
+            <q-parallax src="../assets/Acordo.jpg">
+                <div class="row">
+                    <div class="q-pa-md bg-white shadow-7 col-md-5 q-gutter-y-lg q-ml-xl">
+                        <div class="text-h6 text-center">DsTech e a facilidade do seu software</div>
+                        <div class="text-body1 text-center">
+                            Na jornada do crescimento empresarial, cada passo conta. Estamos aqui para facilitar sua
+                            trajetória.
+                            Seja para discutir ideias, tirar dúvidas ou explorar oportunidades, estamos a um clique de
+                            distância. Clique no botão de contato abaixo e inicie uma conversa conosco. Estamos prontos para
+                            ajudar a impulsionar o sucesso do seu negócio. Juntos, podemos transformar visões em realidade
+                        </div>
+                        <div class="text-center">
+                            <q-btn rounded color="primary" label="Entre em contato"/>
+                        </div>
+                    </div>
+                </div>
+
+            </q-parallax>
+        </q-page-container>
+
+
+        <!-- parte de planos da página Home -->
+        <q-page-container>
+            <div class="text-h4 text-center">Conheça os nossos planos</div>
+            <div class="row justify-around q-mt-xl">
+                <di class="col-sm-3" v-for="i in PlanList.plans" :key="i.id">
+                    <q-card class="q-mb-xl">
+                        <q-card-section>
+                            <div class="text-h5 text-center">{{ i.title }} </div>
+                        </q-card-section>
+                        <q-separator color="dark" inset />
+                        <q-card-section>
+                            <div class="text-h6 text-weight-bolder">Descrição:</div>
+                            <div class="text-subtitle1 text-weight-bold text-primary">{{ i.Description }}</div>
+                        </q-card-section>
+                        <q-card-section>
+                            <q-list>
+                                <q-item-label class="text-weight-bolder" header>Benefícios</q-item-label>
+                                <q-item>
+                                    <q-item-section avatar top>
+                                        <q-avatar icon="info" />
+                                    </q-item-section>
+                                    <q-item-section>
+                                        <q-item-label lines="1">{{ i.Benefits[0] }}</q-item-label>
+                                    </q-item-section>
+                                </q-item>
+                            </q-list>
+                        </q-card-section>
+                        <q-card-section>
+                            <q-btn flat color="primary" label="Ler Mais..." @click="OpenaDialog(i.id)" />
+                        </q-card-section>
+                    </q-card>
+                </di>
+            </div>
+        </q-page-container>
+        <!-- ====================================== Dialog que abre ao clicar em Ler mais em todos os cards de planos ==================================================== -->
+        <q-dialog v-model="dialog">
+            <div class="row">
+                <q-card class="col">
+                    <div class="text-center text-h6 text-weight-bolder">o nosso Plano {{ showDialog.title }} disponibiliza
+                        os seguintes
+                        Benefícios</div>
+                    <ul v-for="(items, index) in showDialog.Benefits" :key="index">
+                        <li>{{ items }}</li>
+                    </ul>
+                    <q-card-section>
+                        <div class="text-body1">
+                            Achou que o Plano {{ showDialog.title }} combina com você?<br>
+                            clique no botão <b class="bg-primary text-white">contato</b> e tenha agora o melhor software
+                            para o sucesso
+                            e realização dos seus sonhos
+                        </div>
+                    </q-card-section>
+                    <q-card-section class="q-mt-md text-center">
+                        <q-btn outline color="primary" label="Contato" />
+                    </q-card-section>
+                </q-card>
+
+            </div>
+        </q-dialog>
+
+
     </q-layout>
 </template>
 
 <script>
 import BarCompt from '@/components/BarCompt.vue';
-
+import * as PlanList from '../../HomeConfig/PlanListConfig';
+import { onMounted, ref } from 'vue';
 export default {
+    setup() {
+        onMounted(() => {
+            console.log(PlanList.plans);
+        })
+
+        // configuração dos planos com dialog e array de objetos externos
+        const dialog = ref(false);
+        const showDialog = ref(null);
+
+        const OpenaDialog = (id) => {
+            showDialog.value = PlanList.plans.find((plan) => plan.id == id);
+            dialog.value = !dialog.value
+        }
+
+        return {
+            PlanList,
+            OpenaDialog,
+            dialog,
+            showDialog,
+        }
+    },
     components: { BarCompt }
 }
 </script>

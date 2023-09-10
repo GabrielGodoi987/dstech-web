@@ -9,10 +9,10 @@
             </q-avatar>
             <div class="gt-xs">
                 <q-tabs>
-                    <q-tab>Segmento</q-tab>
-                    <q-tab>Sobre</q-tab>
-                    <q-tab>Contato</q-tab>
-                    <q-tab>Portfólio</q-tab>
+                    <!-- <q-tab>Segmento</q-tab> -->
+                    <q-route-tab to="/About">Sobre</q-route-tab>
+                    <q-route-tab>Contato</q-route-tab>
+                    <q-route-tab>Portfólio</q-route-tab>
                 </q-tabs>
             </div>
             <q-btn rounded color="primary" label="Comece Agora" />
