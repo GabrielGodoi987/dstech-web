@@ -5,14 +5,14 @@
                 <q-btn dense flat round icon="menu" @click="MobileMenu = !MobileMenu" />
             </div>
             <q-avatar>
-                <div class="text-caption">LOGO</div>
+                <div class="text-caption"><router-link to="/">LOGO</router-link></div>
             </q-avatar>
             <div class="gt-xs">
                 <q-tabs>
                     <!-- <q-tab>Segmento</q-tab> -->
                     <q-route-tab to="/About">Sobre</q-route-tab>
-                    <q-route-tab>Contato</q-route-tab>
-                    <q-route-tab>Portfólio</q-route-tab>
+                    <q-route-tab to="/Contacts">Contato</q-route-tab>
+                    <q-route-tab to="/PortsPage">Portfólio</q-route-tab>
                 </q-tabs>
             </div>
             <q-btn rounded color="primary" label="Comece Agora" />
@@ -42,6 +42,7 @@ export default {
     },
     setup(props) {
 
+        // será usado em uma diretiva para que apareça o menu mobile 
         const MobileMenu = ref(false);
 
         return {

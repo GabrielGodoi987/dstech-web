@@ -64,7 +64,7 @@
             </div>
         </q-page-container>
 
-        
+
         <!-- parte de planos da página Home -->
         <q-page-container>
             <div class="text-h4 text-center">Conheça os nossos planos</div>
@@ -125,12 +125,13 @@
             </div>
         </q-dialog>
 
-
+        <FooterCompt />
     </q-layout>
 </template>
 
 <script>
 import BarCompt from '@/components/BarCompt.vue';
+import FooterCompt from '@/components/FooterCompt.vue';
 import * as PlanList from '../../HomeConfig/PlanListConfig';
 import { onMounted, ref } from 'vue';
 export default {
@@ -155,6 +156,6 @@ export default {
             showDialog,
         }
     },
-    components: { BarCompt }
+    components: { BarCompt, FooterCompt }
 }
 </script>

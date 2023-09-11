@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh lpR lFf">
-    <BarCompt bgColor="bg-secondary text-weight-bold text-dark" />
+    <BarCompt bgColor="bg-secondary text-weight-bold text-black" />
 
     <q-page-container class="text-center q-mt-xl q-gutter-y-md">
       <div class="text-h1 text-weight-bolder">Sobre nós</div>
@@ -65,9 +65,9 @@
     </q-page-container>
 
 
-  <q-page-container>
+    <q-page-container>
 
-  </q-page-container>
+    </q-page-container>
 
 
 
@@ -82,22 +82,23 @@
           </div>
         </div>
         <div class="col-md-4 text-center">
-            <q-img src="../assets/Banner_teste.png"/>
+          <q-img src="../assets/Banner_teste.png" />
         </div>
       </div>
     </q-page-container>
 
-
+    <FooterCompt />
   </q-layout>
 </template>
 
 <script>
 import BarCompt from '@/components/BarCompt.vue';
+import FooterCompt from '@/components/FooterCompt.vue';
 export default {
   setup() {
 
   },
-  components: { BarCompt }
+  components: { BarCompt, FooterCompt }
 }
 
 </script>
