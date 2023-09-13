@@ -14,26 +14,31 @@
                     desenvolvimento deste projeto fictício.
                 </div>
             </div>
-            <!-- fim da primeira coluna do footer -->
+            <!--==================================================== fim da primeira coluna do footer ==================================================-->
+
+            <!-- ===================================================== parte de icones e contatos ================================================= -->
             <div class="col-md-3 q-mt-lg q-gutter-y-md">
                 <div class="text-subtitle1 text-weight-bolder">Suporte e Contatos:</div>
                 <div v-for="(j, index) in  footer.Support " :key="index">
                     <hr>
                     <q-btn flat color="transparent" text-color="dark" :label="j.name" :to="j.path" />
-                    <q-list>
-                        <q-item class="text-body1 text-weight-bolder" v-for="(items, index) in  j.redesSociais " :key="index"> 
-                            <q-item-section :style="{color: items.color}">
-                                <q-item-label style="cursor: pointer;">{{ items.name }}</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                    </q-list>
                 </div>
+                <q-list class="row q-mb-md">
+                    <q-item class="col-md-3 text-body1 text-weight-bolder" v-for="icon in icons" :key="icon.id">
+                        <q-item-section>
+                            <q-btn flat :icon="icon.iconName" color="primary"/>
+                        </q-item-section>
+                    </q-item>
+                </q-list>
             </div>
 
+            <!-- fim da parte de redes sociais e contatos do footer -->
+
+            <!-- =================================================== links para páginas ====================================================== -->
             <div class="col-md-2 q-mt-lg">
                 <div class="text-subtitle1 text-weight-bolder">Links:</div>
-                <q-list separator v-for="( i, index ) in  footer.links " :key=" index ">
-                    <q-item clickable class="text-center" :to=" i.path ">
+                <q-list separator v-for="( i, index ) in  footer.links " :key="index">
+                    <q-item clickable class="text-center" :to="i.path">
                         <q-item-section>
                             <q-icon name="info" />
                         </q-item-section>
@@ -58,19 +63,19 @@ export default {
         const icons = [
             {
                 id: id++,
-                URL: "../assets/icons/facebook.png"
+                iconName: 'fa-brands fa-facebook'
             },
             {
                 id: id++,
-                URL: "../assets/icons/instagram.png"
+                iconName: 'fa-brands fa-instagram'
             },
             {
                 id: id++,
-                URL: "../assets/icons/twitter.png"
+                iconName: 'fa-brands fa-youtube'
             },
             {
                 id: id++,
-                URL: "../assets/icons/youtube.png"
+                iconName: 'fa-brands fa-twitter'
             }
 
         ];
@@ -105,25 +110,7 @@ export default {
                     path: '/Contacts'
                 },
                 {
-                    name: 'Nossas redes Sociais',
-                    redesSociais: [
-                        {
-                            name: 'Facebook',
-                            color: '#4267B2'
-                        },
-                        {
-                            name: 'Twitter',
-                            color: '#657786'
-                        },
-                        {
-                            name: 'Youtube',
-                            color: '#FF0000'
-                        },
-                        {
-                            name: 'Instagram',
-                            color: '#F56040'
-                        }
-                    ]
+                    name: 'Nossas redes Sociais'
                 }
             ]
         }
