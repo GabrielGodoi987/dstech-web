@@ -11,8 +11,7 @@
                             <q-input v-model="email" label="Email" color="dark" />
                             <q-input v-model="subject" label="Nome do Assunto" color="dark" />
                             <q-input v-model="content" type="textarea" label="escreva o assunto" />
-                            <q-btn bordered color="primary" label="Enviar" class="q-mt-xl"
-                                @click="sendMessage()" />
+                            <q-btn bordered color="primary" label="Enviar" class="q-mt-xl" @click="sendMessage()" />
                         </div>
                     </q-form>
                 </q-card>
@@ -45,6 +44,8 @@
 <script>
 import BarCompt from '@/components/BarCompt.vue';
 import FooterCompt from '@/components/FooterCompt.vue';
+import axios from 'axios';
+
 import { ref } from 'vue';
 
 export default {
@@ -79,23 +80,26 @@ export default {
         const content = ref('');
 
 
-        function sendMessage(){
-            const userRequest = [
+        function sendMessage() {
+            axios.post('http://localhost:3085//teste',
                 {
                     name: name.value,
                     email: email.value,
                     subject: subject.value,
                     content: content.value
-                }
-            ];
-
+                }).then((Response) => {
+                    console.log(Response)
+                }).catch((error) => {
+                    console.log(error)
+                })
 
             name.value = '';
             email.value = '';
             subject.value = '';
             content.value = '';
+          
+            alert('botão está functionando')
 
-            console.log(userRequest);
         }
 
         return {
