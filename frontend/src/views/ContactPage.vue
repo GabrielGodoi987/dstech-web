@@ -12,7 +12,7 @@
                             <q-input v-model="subject" label="Nome do Assunto" color="dark" />
                             <q-input v-model="content" type="textarea" label="escreva o assunto" lazy-rules :rules="[
                                 val => val !== null && val !== '' || 'Por favor insira uma mensagen para nós',
-                                val => val > 150 || 'sua mensagem deve ter mais de 100 caracteres'
+                                val => val > 10 || 'sua mensagem deve ter mais de 100 caracteres'
                             ]" />
                             <q-btn bordered color="primary" label="Enviar" class="q-mt-xl" @click="sendMessage()" />
                         </div>
@@ -47,7 +47,7 @@
                                     <q-item-label>
                                         <q-btn flat :icon="i.icon" color="primary" size="12px" />
                                         <div class="text-subtitle2 text-weight-bold"> {{ i.name }}</div>
-                                        <div class="text-subtitle2 text-weight-bold">{{ i.content }}</div>
+                                        <div class="text-subtitle2 text-weight-bold q-mb-sm">{{ i.content }}</div>
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>

@@ -76,8 +76,8 @@
                         </q-card-section>
                         <q-separator color="dark" inset />
                         <q-card-section>
-                            <div class="text-h6 text-weight-bolder">Descrição:</div>
-                            <div class="text-subtitle1 text-weight-bold text-primary">{{ i.Description }}</div>
+                            <div class="text-subtitle1 text-weight-bolder">Descrição:</div>
+                            <div class="text-subtitle2 text-weight-bold text-primary">{{ i.Description }}</div>
                         </q-card-section>
                         <q-card-section>
                             <q-list>
