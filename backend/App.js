@@ -8,9 +8,8 @@ const bodyParser = require('body-parser');
 //usado para receber/enviar requisições de rotas diferentes em que o projeto está sendo executado
 const cors = require('cors')
 
-//importando rotas
-const MessageRouter = require("./routes/MessageRouter");
-const ListUser = require("./routes/ListUsersRouter")
+//importando controllers
+const messageController = require('./controllers/MessageController');
 
 //                                   #Utilizações
 
@@ -23,10 +22,10 @@ app.use(bodyParser.json());
 //usamos a instancia do cors para que possamos enviar e receber os dados do front end e do backend
 app.use(cors())
 
-app.post('/usersmessage', MessageRouter.router)
+app.post('/usersmessage', messageController.createMessage)
 
 
-app.get('/ListData', ListUser.router)
+app.get('/ListData', messageController.ListUsers)
 
 
 app.listen(3085, () => {
