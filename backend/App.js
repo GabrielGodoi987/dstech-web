@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 
 //importando controllers
-const messageController = require('./controllers/MessageController');
+const messageController = require('./controllers/MessageController.js');
 
 //                                   #Utilizações
 
@@ -20,7 +20,7 @@ app.use(express.json());
 //usamos o body-parser para responder json ao usarmos o insomnia
 app.use(bodyParser.json());
 //usamos a instancia do cors para que possamos enviar e receber os dados do front end e do backend
-app.use(cors())
+app.use(cors());
 
 app.post('/usersmessage', messageController.createMessage)
 

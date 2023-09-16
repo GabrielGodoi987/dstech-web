@@ -1,16 +1,19 @@
 const testedb = require('../db/models/index');
+const cors = require('cors');
 
-async function createMessage (req, res) {
-    let id = 1;
+cors();
+
+async function createMessage(req, res) {
     try {
+        var id =  Math.floor(Math.random() * 100);
         const userData = req.body;
         const newUser = await testedb.UserMessage.create({
-            id: id++,
+            id: id.toFixed(0),
             name: userData.name,
             email: userData.email,
             subject: userData.subject,
             content: userData.content,
-            createAt: Date.now(),
+            createdAt: Date.now(),
             updatedAt: Date.now()
         })
         res.status(200).json({
@@ -18,23 +21,27 @@ async function createMessage (req, res) {
             newUser
         })
     } catch (error) {
-        if (res.status(400)) {
-            res.json({
+        console.error(error); // Log the error for debugging purposes
+
+        if (res.statusCode == 400) {
+            // Handle validation errors (e.g., invalid input data)
+            res.status(400).json({
                 error: true,
-                TypeError: 400,
-                message: 'you must have made a mistake, please try again and pay attention to the entries you need to enter the data, thank you'
-            })
-        } else if (res.status(500)) {
-            res.json({
+                statusCode: 400,
+                message: 'Validation error: Please check your input data.'
+            });
+        } else {
+            // Handle other unexpected errors
+            res.status(500).json({
                 error: true,
-                TypeError: 500,
-                message: `sorry our server is having some problems, wait a minute or tell us problem by sending an email to email@gmail.com ${error}`
-            })
+                statusCode: 500,
+                message: `Internal server error: ${error.message}`
+            });
         }
     }
 }
 
-async function ListUsers(req, res){
+async function ListUsers(req, res) {
     try {
         const listUser = await testedb.UserMessage.findAll({
             attributes: ['name', 'email', 'content']

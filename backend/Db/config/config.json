@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "root",
-    "password": 445528,
+    "password": null,
     "database": "dstechWeb",
     "host": "localhost",
     "dialect": "mysql"

@@ -2,11 +2,11 @@
     <q-layout view="lHh lpR lFf">
         <BarCompt bgColor="bg-secondary text-black" />
         <q-page-container class="row q-pa-md justify-center q-mt-xl text-center">
-            <div class=" col-md-5 q-mt-xl">
+            <div class=" col-md-6 q-mt-xl">
                 <q-card class="bg-secondary">
                     <div class="text-h6">Entre em contato conosco</div>
                     <q-form class="row justify-around">
-                        <div class="col-md-8 q-pa-md q-ml-md q-gutter-y-md">
+                        <div class="col-md-12 q-pa-md q-ml-md q-gutter-y-md">
                             <q-input v-model="name" label="Nome" color="dark" />
                             <q-input v-model="email" label="Email" color="dark" />
                             <q-input v-model="subject" label="Nome do Assunto" color="dark" />
@@ -16,7 +16,7 @@
                     </q-form>
                 </q-card>
             </div>
-            <div class="col-md-4 q-mt-xl">
+            <div class="col-md-5 q-mt-xl">
                 <q-card>
                     <div class="text-h6">Entre em contato</div>
                     <div class="text-caption">entre em contato e agende agora um estudo de caso ou conheça os nosso planos
