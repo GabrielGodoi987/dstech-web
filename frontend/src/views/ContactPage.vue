@@ -2,11 +2,29 @@
     <q-layout view="lHh lpR lFf">
         <BarCompt bgColor="bg-secondary text-black" />
         <q-page-container class="row q-pa-md justify-center q-mt-xl text-center">
-            <div class=" col-md-6 q-mt-xl">
+            <div class="gt-sm col-md-5 q-mt-xl">
+                <q-card class="bg-secondary">
+                    <div class="text-h6">Entre em contato conosco</div>
+                    <q-form class="row justify-around" @submit="sendMessage()">
+                        <div class="col-md-12 q-pa-md q-ml-md q-gutter-y-md">
+                            <q-input v-model="name" label="Nome" color="dark" />
+                            <q-input v-model="email" label="Email" color="dark" />
+                            <q-input v-model="subject" label="Nome do Assunto" color="dark" />
+                            <q-input v-model="content" type="textarea" label="escreva o assunto" lazy-rules :rules="[
+                                val => val !== null && val !== '' || 'Por favor insira uma mensagen para nós',
+                                val => val > 150 || 'sua mensagem deve ter mais de 100 caracteres'
+                            ]" />
+                            <q-btn bordered color="primary" label="Enviar" class="q-mt-xl" @click="sendMessage()" />
+                        </div>
+                    </q-form>
+                </q-card>
+            </div>
+
+            <div class="lt-md q-mt-xl" style="width: 450px;">
                 <q-card class="bg-secondary">
                     <div class="text-h6">Entre em contato conosco</div>
                     <q-form class="row justify-around">
-                        <div class="col-md-12 q-pa-md q-ml-md q-gutter-y-md">
+                        <div class="q-pa-md q-ml-md q-gutter-y-md" style="width: 100%;">
                             <q-input v-model="name" label="Nome" color="dark" />
                             <q-input v-model="email" label="Email" color="dark" />
                             <q-input v-model="subject" label="Nome do Assunto" color="dark" />
@@ -16,13 +34,14 @@
                     </q-form>
                 </q-card>
             </div>
-            <div class="col-md-5 q-mt-xl">
+
+            <div class="col-md-4 q-mt-xl">
                 <q-card>
                     <div class="text-h6">Entre em contato</div>
                     <div class="text-caption">entre em contato e agende agora um estudo de caso ou conheça os nosso planos
                     </div>
                     <div class="row justify-center">
-                        <q-list class="col q-mt-lg" style="max-width: 500px">
+                        <q-list class="col q-mt-lg">
                             <q-item v-for="(i, index) in contacts" :key="index" class="q-mt-md">
                                 <q-item-section>
                                     <q-item-label>
@@ -87,16 +106,21 @@ export default {
                 subject: subject.value,
                 content: content.value
             }
-            axios.post('http://localhost:3085/usersmessage', data).then((Response) => {
-                console.log(Response)
-            }).catch((error) => {
-                console.log(error, data);
-            })
+            if (name.value != "" && email.value != "" && subject.value != "" && content.value != "") {
+                axios.post('http://localhost:3085/usersmessage', data).then((Response) => {
+                    console.log(Response)
+                }).catch((error) => {
+                    console.log(error, data);
+                })
 
-            name.value = '';
-            email.value = '';
-            subject.value = '';
-            content.value = '';
+                name.value = '';
+                email.value = '';
+                subject.value = '';
+                content.value = '';
+            } else {
+                alert('teste')
+
+            }
 
         }
 

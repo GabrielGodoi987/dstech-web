@@ -22,13 +22,13 @@
 
     <q-drawer v-model="MobileMenu">
         <q-tabs vertical swipeable class="q-mt-xl q-gutter-xl">
-            <q-tab>Segmento</q-tab>
+            <q-route-tab to="/About">Sobre</q-route-tab>
             <br>
-            <q-tab>Sobre</q-tab>
+            <q-route-tab to="/Contacts">Contato</q-route-tab>
             <br>
-            <q-tab>Contato</q-tab>
+            <q-route-tab to="/Contacts">Contato</q-route-tab>
             <br>
-            <q-tab>Portfólio</q-tab>
+            <q-route-tab to="/PortsPage">Portfólio</q-route-tab>
         </q-tabs>
     </q-drawer>
 </template>
