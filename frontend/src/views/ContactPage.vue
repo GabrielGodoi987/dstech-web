@@ -81,24 +81,22 @@ export default {
 
 
         function sendMessage() {
-            axios.post('http://localhost:3085//teste',
-                {
-                    name: name.value,
-                    email: email.value,
-                    subject: subject.value,
-                    content: content.value
-                }).then((Response) => {
-                    console.log(Response)
-                }).catch((error) => {
-                    console.log(error)
-                })
+            const data = {
+                name: name.value,
+                email: email.value,
+                subject: subject.value,
+                content: content.value
+            }
+            axios.post('http://localhost:3085/usersmessage', data).then((Response) => {
+                console.log(Response)
+            }).catch((error) => {
+                console.log(error, data);
+            })
 
             name.value = '';
             email.value = '';
             subject.value = '';
             content.value = '';
-          
-            alert('botão está functionando')
 
         }
 
